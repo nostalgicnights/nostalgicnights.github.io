@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nostalgic Nights Entertainment | Gaming Parties & Events</title>
+    <style>
+        /* Base Styling & Theme Colors */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121214;
+            color: #eeeeee;
+            line-height: 1.6;
+        }
+
+        /* Neon Glow Effects matching the Logo */
+        .neon-text-green {
+            color: #39ff14;
+            text-shadow: 0 0 5px #39ff14, 0 0 15px #39ff14;
+        }
+        .neon-text-pink {
+            color: #ff007f;
+            text-shadow: 0 0 5px #ff007f, 0 0 15px #ff007f;
+        }
+        .neon-text-blue {
+            color: #00e5ff;
+            text-shadow: 0 0 5px #00e5ff, 0 0 15px #00e5ff;
+        }
+
+        /* Layout Structure */
+        header {
+            background-color: #1a1a1e;
+            border-bottom: 2px solid #ff007f;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-left: 2rem;
+        }
+        nav ul li a {
+            color: #eeeeee;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #00e5ff;
+        }
+
+        /* Hero Landing Section */
+        .hero {
+            background: radial-gradient(circle, #25182e 0%, #121214 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+        .hero-logo-placeholder {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto 2rem auto;
+            border: 3px dashed #ff007f;
+            padding: 2rem;
+            border-radius: 12px;
+            background-color: #1a1a1e;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .hero h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .hero .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            font-weight: 500;
+        }
+        .btn-action {
+            display: inline-block;
+            background-color: transparent;
+            color: #39ff14;
+            border: 2px solid #39ff14;
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-action:hover {
+            background-color: #39ff14;
+            color: #121214;
+            box-shadow: 0 0 20px #39ff14;
+        }
+
+        /* Services & Gallery Layout Columns */
+        .main-content {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+        .card {
+            background-color: #1a1a1e;
+            border: 1px solid #333;
+            border-top: 4px solid #00e5ff;
+            border-radius: 8px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #00e5ff;
+            box-shadow: 0 5px 15px rgba(0, 229, 255, 0.1);
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        .card p {
+            color: #aaaaaa;
+            font-size: 1rem;
+        }
+
+        /* Responsive Photo Gallery Style rules */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 5rem;
+        }
+        .gallery-item {
+            position: relative;
+            background-color: #1a1a1e;
+            border: 2px solid #333;
+            border-radius: 6px;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .gallery-item:hover {
+            border-color: #39ff14;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+            transform: scale(1.02);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .gallery-placeholder-text {
+            color: #55555a;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            z-index: 1;
+            text-align: center;
+            padding: 1rem;
+        }
+        .gallery-item:hover .gallery-placeholder-text {
+            color: #39ff14;
+        }
+
+        /* Booking / Contact Form Section */
+        .booking-section {
+            background-color: #1a1a1e;
+            border: 2px solid #00e5ff;
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            max-width: 700px;
+            margin: 2rem auto 5rem auto;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        .form-group label {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            color: #00e5ff;
+        }
+        .form-control {
+            background-color: #121214;
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 0.8rem 1rem;
+            color: #eeeeee;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: #00e5ff;
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+        }
+        select.form-control {
+            cursor: pointer;
+        }
+        .btn-submit {
+            background-color: transparent;
+            color: #ff007f;
+            border: 2px solid #ff007f;
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.2);
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        .btn-submit:hover {
+            background-color: #ff007f;
+            color: #121214;
+            box-shadow: 0 0 20px #ff007f;
+        }
+
+        /* Footer Element */
+        footer {
+            background-color: #09090b;
+            border-top: 1px solid #333;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        footer p {
+            color: #aaaaaa;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .social-links {
+            margin: 1.5rem 0;
+        }
+        .social-links a {
+            color: #eeeeee;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid #333;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #00e5ff;
+            border-color: #00e5ff;
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+        }
+        .copyright {
+            color: #666666 !important;
+            font-size: 0.85rem !important;
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Sticky Navigation -->
+    <header>
+        <nav>
+            <div class="logo-text">
+                <span class="neon-text-green">Nostalgic</span> 
+                <span class="neon-text-pink">Nights</span>
+            </div>
+            <ul>
+                <li><a href="#entertainment">What We Offer</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Book Event</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Branding Showcase -->
+    <section class="hero">
+        <div class="hero-logo-placeholder">
+            <h1 class="neon-text-green">Nostalgic Nights</h1>
