@@ -124,7 +124,7 @@
             box-shadow: 0 0 20px #39ff14;
         }
 
-        /* Services & Gallery Layout Columns */
+        /* Services Columns */
         .main-content {
             max-width: 1200px;
             margin: 4rem auto;
@@ -165,52 +165,6 @@
         .card p {
             color: #aaaaaa;
             font-size: 1rem;
-        }
-
-        /* Responsive Photo Gallery Style rules */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 5rem;
-        }
-        .gallery-item {
-            position: relative;
-            background-color: #1a1a1e;
-            border: 2px solid #333;
-            border-radius: 6px;
-            aspect-ratio: 4 / 3;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        .gallery-item:hover {
-            border-color: #39ff14;
-            box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
-            transform: scale(1.02);
-        }
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-        .gallery-placeholder-text {
-            color: #55555a;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: bold;
-            z-index: 1;
-            text-align: center;
-            padding: 1rem;
-        }
-        .gallery-item:hover .gallery-placeholder-text {
-            color: #39ff14;
         }
 
         /* Booking / Contact Form Section */
@@ -324,17 +278,68 @@
         <nav>
             <div class="logo-text">
                 <span class="neon-text-green">Nostalgic</span> 
-                <span class="neon-text-pink">Nights</span>
+                <span class="neon-text-blue">Nights</span>
+                <span class="neon-text-pink">Entertainment</span>
             </div>
             <ul>
                 <li><a href="#entertainment">What We Offer</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#contact">Book Event</a></li>
+                <li><a href="#contact">Contact Us</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Main Branding Showcase -->
     <section class="hero">
-       <img src="logo.png" alt="Nostalgic Nights Entertainment Logo" style="max-width: 500px; width: 100%; height: auto;">
-            <h1 class="neon-text-green">Nostalgic Nights</h1>
+ <img src="logo.png" alt="Nostalgic Nights Entertainment Logo" style="max-width: 500px; width: 100%; height: auto;">
+        </div>
+        
+        <p class="tagline neon-text-blue">Game Nights &bull; Throwback Parties &bull; Events</p>
+        <a href="#contact" class="btn-action">Book Your Party Now</a>
+    </section>
+
+    <!-- Site Offerings Grid Sections -->
+    <main class="main-content">
+        
+        <!-- Entertainment Section -->
+        <h2 id="entertainment" class="section-title neon-text-green">What We Offer</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Throwback Parties</h3>
+                <p>Host the ultimate birthday or corporate gathering with custom retro hardware configurations, classic software, and high-energy multi-player options.</p>
+            </div>
+            <div class="card">
+                <h3>Tournaments</h3>
+                <p>Compete for prizes and bragging rights in our regularly scheduled local gaming brackets. From retro fighting games to modern competitive multiplayer.</p>
+            </div>
+            <div class="card">
+                <h3>Community Events</h3>
+                <p>Join our interactive pop-up game nights. Perfect for schools, festivals, or local venues looking to bring people together over timeless gaming classics.</p>
+            </div>
+        </div>
+
+        <!-- Contact/Booking Form Section -->
+        <h2 id="contact" class="section-title neon-text-blue">Contact Us</h2>
+<!-- Nostalgic Nights Contact Section -->
+<section id="contact-info" style="text-align: center; padding: 50px 20px; font-family: 'Arial', sans-serif; background-color: #f9f9f9; color: #333;">
+    <div style="max-width: 600px; margin: 0 auto; border-top: 3px solid #1fa363; padding-top: 30px;">
+        
+        <!-- Owner Details -->
+        <h3 style="font-size: 1.4rem; margin-bottom: 5px; color: #111;">Lucas Morris</h3>
+        <p style="font-style: italic; color: #666; margin-top: 0; margin-bottom: 25px;">Owner &amp; Event Coordinator</p>
+        
+        <!-- Direct Contact Links -->
+        <div style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px;">
+            <p style="margin: 10px 0;">📞 <strong>Phone:</strong> <a href="tel:7652659967" style="color: #1fa363; text-decoration: none; font-weight: bold;">(765) 265-9967</a></p>
+            <p style="margin: 10px 0;">✉️ <strong>Email:</strong> <a href="mailto:NostalgicNightsBooking@gmail.com" style="color: #1fa363; text-decoration: none;">NostalgicNightsBooking@gmail.com</a></p>
+        </div>
+        
+        <!-- Social Media Links -->
+        <div style="border-top: 1px solid #eee; padding-top: 20px; font-size: 1rem;">
+            <p style="margin-bottom: 10px; color: #555;"><strong>Find us on social media:</strong></p>
+            <a href="https://facebook.com" target="_blank" style="display: inline-block; margin: 0 10px; color: #9c27b0; text-decoration: none; font-weight: bold;">📘 Facebook</a>
+            <a href="https://instagram.com" target="_blank" style="display: inline-block; margin: 0 10px; color: #9c27b0; text-decoration: none; font-weight: bold;">📸 Instagram</a>
+            <p style="font-size: 0.9rem; color: #777; margin-top: 10px;">@NostalgicNightsEntertainment</p>
+        </div>
+
+    </div>
+</section>
