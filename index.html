@@ -12,7 +12,7 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Rubik Mono One', sans-serif;
             background-color: #121214;
             color: #eeeeee;
             line-height: 1.6;
@@ -20,22 +20,22 @@
 
         /* Neon Glow Effects matching the Logo */
         .neon-text-green {
-            color: #39ff14;
-            text-shadow: 0 0 5px #39ff14, 0 0 15px #39ff14;
+            color: #38AF5F;
+            text-shadow: 0 0 5px #38AF5F, 0 0 15px #38AF5F;
         }
         .neon-text-pink {
-            color: #ff007f;
-            text-shadow: 0 0 5px #ff007f, 0 0 15px #ff007f;
+            color: #e04c8e;
+            text-shadow: 0 0 5px #e04c8e, 0 0 15px #e04c8e;
         }
         .neon-text-blue {
-            color: #00e5ff;
-            text-shadow: 0 0 5px #00e5ff, 0 0 15px #00e5ff;
+            color: #2c97db;
+            text-shadow: 0 0 5px #2c97db, 0 0 15px #2c97db;
         }
 
         /* Layout Structure */
         header {
             background-color: #1a1a1e;
-            border-bottom: 2px solid #ff007f;
+            border-bottom: 2px solid #e04c8e;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -68,7 +68,7 @@
             transition: color 0.3s;
         }
         nav ul li a:hover {
-            color: #00e5ff;
+            color: #2c97db;
         }
 
         /* Hero Landing Section */
@@ -82,7 +82,7 @@
             max-width: 500px;
             width: 100%;
             margin: 0 auto 2rem auto;
-            border: 3px dashed #ff007f;
+            border: 3px dashed #e04c8e;
             padding: 2rem;
             border-radius: 12px;
             background-color: #1a1a1e;
@@ -107,8 +107,8 @@
         .btn-action {
             display: inline-block;
             background-color: transparent;
-            color: #39ff14;
-            border: 2px solid #39ff14;
+            color: #38AF5F;
+            border: 2px solid #38AF5F;
             padding: 0.8rem 2rem;
             font-size: 1.1rem;
             font-weight: bold;
@@ -119,9 +119,9 @@
             transition: all 0.3s ease;
         }
         .btn-action:hover {
-            background-color: #39ff14;
+            background-color: #38AF5F;
             color: #121214;
-            box-shadow: 0 0 20px #39ff14;
+            box-shadow: 0 0 20px #38AF5F;
         }
 
         /* Services Columns */
@@ -133,7 +133,8 @@
         .section-title {
             text-align: center;
             font-size: 2.2rem;
-            margin-bottom: 3rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -146,7 +147,7 @@
         .card {
             background-color: #1a1a1e;
             border: 1px solid #333;
-            border-top: 4px solid #00e5ff;
+            border-top: 4px solid #2c97db;
             border-radius: 8px;
             padding: 2.5rem 2rem;
             text-align: center;
@@ -154,7 +155,7 @@
         }
         .card:hover {
             transform: translateY(-5px);
-            border-color: #00e5ff;
+            border-color: #2c97db;
             box-shadow: 0 5px 15px rgba(0, 229, 255, 0.1);
         }
         .card h3 {
@@ -170,7 +171,7 @@
         /* Booking / Contact Form Section */
         .booking-section {
             background-color: #1a1a1e;
-            border: 2px solid #00e5ff;
+            border: 2px solid #2c97db;
             box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
             border-radius: 12px;
             padding: 3rem 2rem;
@@ -189,7 +190,7 @@
             font-size: 0.9rem;
             letter-spacing: 1px;
             margin-bottom: 0.5rem;
-            color: #00e5ff;
+            color: #2c97db;
         }
         .form-control {
             background-color: #121214;
@@ -203,7 +204,7 @@
         }
         .form-control:focus {
             outline: none;
-            border-color: #00e5ff;
+            border-color: #2c97db;
             box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
         }
         select.form-control {
@@ -211,8 +212,8 @@
         }
         .btn-submit {
             background-color: transparent;
-            color: #ff007f;
-            border: 2px solid #ff007f;
+            color: #e04c8e;
+            border: 2px solid #e04c8e;
             width: 100%;
             padding: 1rem;
             font-size: 1.1rem;
@@ -226,9 +227,9 @@
             margin-top: 1rem;
         }
         .btn-submit:hover {
-            background-color: #ff007f;
+            background-color: #e04c8e;
             color: #121214;
-            box-shadow: 0 0 20px #ff007f;
+            box-shadow: 0 0 20px #e04c8e;
         }
 
         /* Footer Element */
@@ -260,8 +261,8 @@
             transition: all 0.3s ease;
         }
         .social-links a:hover {
-            color: #00e5ff;
-            border-color: #00e5ff;
+            color: #2c97db;
+            border-color: #2c97db;
             box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
         }
         .copyright {
@@ -269,6 +270,40 @@
             font-size: 0.85rem !important;
             margin-top: 1.5rem;
         }
+
+        /* New Photo Gallery Grid Styles */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            background: #1e1e24;
+            border: 1px solid #334155;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-caption {
+            padding: 1rem;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
@@ -317,23 +352,62 @@
             </div>
         </div>
 
+
+        <!-- New Event Gallery Section -->
+        <h2 id="gallery" class="section-title neon-text-green">Event Gallery</h2>
+            <div class="gallery-grid">
+ 
+                <!-- Row 1 -->               
+                <div class="gallery-item">
+                    <img src="260928_Staggs_03.png" alt="">
+                </div>
+
+                <div class="gallery-item">
+                    <img src="260928_Staggs_04.png" alt="">
+                </div>
+
+                <div class="gallery-item">
+                    <img src="260928_Staggs_05.png" alt="">
+                </div>
+
+                <!-- Row 2 -->               
+                <div class="gallery-item">
+                    <img src="260928_Staggs_06.png" alt="">
+                </div>
+
+                <div class="gallery-item">
+                    <img src="260928_Staggs_08.png" alt="">
+                </div>
+
+                <div class="gallery-item">
+                    <img src="260928_Staggs_09.png" alt="">
+                </div>
+
+                <!-- Row 3 -->               
+                <div class="gallery-item">
+                    <img src="260928_Staggs_12.png" alt="">
+                </div>
+
+            </div>
+        </section>
+
         <!-- Contact/Booking Form Section -->
-        <h2 id="contact" class="section-title neon-text-blue">Contact Us</h2>
+        <h2 id="contact" class="section-title neon-text-green">Contact Us</h2>
 <!-- Nostalgic Nights Contact Section -->
-<section id="contact-info" style="text-align: center; padding: 50px 20px; font-family: 'Arial', sans-serif; background-color: #121214; color: #ff007f;">
-    <div style="max-width: 600px; margin: 0 auto; border-top: 3px solid #00e5ff; padding-top: 20px;">
+<section id="contact-info" style="text-align: center; padding: 50px 20px; font-family: 'Arial', sans-serif; background-color: #121214; color: #e04c8e;">
+    <div style="max-width: 600px; margin: 0 auto; border-top: 3px solid #2c97db; padding-top: 20px;">
               
         <!-- Direct Contact Links -->
         <div style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px;">
-            <p style="margin: 10px 0;">✉️ <strong>Email:</strong> <a href="mailto:NostalgicNightsBooking@gmail.com" style="color: #39ff14; text-decoration: none;">NostalgicNightsBooking@gmail.com</a></p>
+            <p style="margin: 10px 0;">✉️ <strong>Email:</strong> <a href="mailto:NostalgicNightsBooking@gmail.com" style="color: #38AF5F; text-decoration: none;">NostalgicNightsBooking@gmail.com</a></p>
         </div>
         
         <!-- Social Media Links -->
-        <div style="border-top: 3px solid #00e5ff; padding-top: 20px; font-size: 1rem;">
-            <p style="margin-bottom: 10px; color: #ff007f;"><strong>Find us on social media:</strong></p>
-            <a href="https://facebook.com" target="_blank" style="display: inline-block; margin: 0 10px; color: #00e5ff; text-decoration: none; font-weight: bold;">📘 Facebook</a>
-            <a href="https://instagram.com" target="_blank" style="display: inline-block; margin: 0 10px; color: #00e5ff; text-decoration: none; font-weight: bold;">📸 Instagram</a>
-            <p style="font-size: 0.9rem; color: #39ff14; margin-top: 10px;">@NostalgicNightsEntertainment</p>
+        <div style="border-top: 3px solid #2c97db; padding-top: 20px; font-size: 1rem;">
+            <p style="margin-bottom: 10px; color: #e04c8e;"><strong>Find us on social media:</strong></p>
+            <a href="https://facebook.com" target="_blank" style="display: inline-block; margin: 0 10px; color: #2c97db; text-decoration: none; font-weight: bold;">📘 Facebook</a>
+            <a href="https://instagram.com" target="_blank" style="display: inline-block; margin: 0 10px; color: #2c97db; text-decoration: none; font-weight: bold;">📸 Instagram</a>
+            <p style="font-size: 0.9rem; color: #38AF5F; margin-top: 10px;">@NostalgicNightsEntertainment</p>
         </div>
 
     </div>
