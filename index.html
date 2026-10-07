@@ -304,6 +304,43 @@
             text-align: center;
         }
 
+        /* --- Pricing & Bundle Grid --- */
+        .bundle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .bundle-card {
+            background: #11141a;
+            border: 1px solid #1f2833;
+            border-radius: 8px;
+            padding: 25px 20px;
+            text-align: center;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+        .bundle-card:hover {
+            border-color: #2c97db;
+            transform: scale(1.02);
+        }
+        .bundle-card h3 {
+            color: #38AF5F;
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+        .price {
+            font-size: 2rem;
+            color: #2c97db;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        .details {
+            font-size: 0.9rem;
+            color: #2c97db;
+            margin-bottom: 0;
+            font-style: italic;
+        }
+
     </style>
 </head>
 <body>
@@ -318,6 +355,7 @@
             </div>
             <ul>
                 <li><a href="#entertainment">What We Offer</a></li>
+                <li><a href="#party-bundles">Party Bundles</a></li>
                 <li><a href="#contact">Contact Us</a></li>
             </ul>
         </nav>
@@ -325,11 +363,11 @@
 
     <!-- Main Branding Showcase -->
     <section class="hero">
- <img src="logo_new.png" alt="Nostalgic Nights Entertainment Logo" style="max-width: 500px; width: 100%; height: auto;">
+ <img src="logo.png" alt="Nostalgic Nights Entertainment Logo" style="max-width: 500px; width: 100%; height: auto;">
         </div>
         
         <p class="tagline neon-text-blue"></p>
-        <a href="#contact" class="btn-action">Book Your Party Now</a>
+        <a href="#party-bundles" class="btn-action">Book Your Party Now</a>
     </section>
 
     <!-- Site Offerings Grid Sections -->
@@ -390,6 +428,37 @@
 
             </div>
         </section>
+
+    <!-- Party Bundles Section -->
+        <h2 id="party-bundles" class="section-title neon-text-green">Party Bundles</h2>
+    <section id="party-bundles" style="text-align: center; padding: 50px 20px; font-family: 'Arial', sans-serif; background-color: #121214; color: #e04c8e;">
+        <div class="bundle-grid">
+            <div class="bundle-card">
+                <h3>4 Consoles</h3>
+                <p>2 Hours of Gaming</p>
+                <div class="price">$250</div>
+                <p class="details">+$50 each additional hour</p>
+            </div>
+            <div class="bundle-card">
+                <h3>6 Consoles</h3>
+                <p>3 Hours of Gaming</p>
+                <div class="price">$375</div>
+                <p class="details">+$75 each additional hour</p>
+            </div>
+            <div class="bundle-card">
+                <h3>8 Consoles</h3>
+                <p>4 Hours of Gaming</p>
+                <div class="price">$575</div>
+                <p class="details">+$100 each additional hour</p>
+            </div>
+            <div class="bundle-card">
+                <h3>10 Consoles</h3>
+                <p>4 Hours of Gaming</p>
+                <div class="price">$800</div>
+                <p class="details">+$100 each additional hour</p>
+            </div>
+        </div>
+    </section>
 
         <!-- Contact/Booking Form Section -->
         <h2 id="contact" class="section-title neon-text-green">Contact Us</h2>
