@@ -123,6 +123,13 @@
             color: #121214;
             box-shadow: 0 0 20px #38AF5F;
         }
+.button-container {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically if needed */
+    width: 100%;
+    padding: 20px 0;
+}
 
         /* Services Columns */
         .main-content {
@@ -232,7 +239,7 @@
             box-shadow: 0 0 20px #e04c8e;
         }
 
-        /* Footer Element */
+       /* Footer Element */
         footer {
             background-color: #09090b;
             border-top: 1px solid #333;
@@ -352,12 +359,12 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 2.2rem;
     font-weight: 800;  /* Extra bold */
-    color: #111111;    /* Deep, dark gray */
+    color: #ffffff;
     margin-bottom: 10px;
 }
 
 #our-consoles p {
-    color: #666;
+    color: #aaaaaa;
     margin-bottom: 30px;
 }
 
@@ -373,10 +380,10 @@
 
 /* Individual brand columns (Nintendo, PlayStation, Xbox/Sega) */
 .console-column {
-    background-color: #f9f9f9;
+    background-color: #000000;
     padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
     border-top: 6px solid #333; 
     transition: transform 0.2s ease;
 }
@@ -406,7 +413,7 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     padding: 10px 0;
     font-size: 1.1rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08); /* Subtle dividers */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle dividers */
 }
 
 .console-column li:last-child {
@@ -414,29 +421,36 @@
 }
 
 .console-column.nintendo {
-    border-top-color: #E60012;
-    background-color: #FFF5F5;
+    border-top-color: #e04c8e;
 }
 .console-column.nintendo h3 {
-    color: #C30010; /* Richer, deep Nintendo red */
-    border-bottom: 2px solid #C30010;
+    color: #ffffff;
+    border-bottom: 2px solid #e04c8e;
+}
+.console-column.nintendo li {
+    color: #e04c8e;
 }
 
 .console-column.playstation {
-    border-top-color: #00439C;
-    background-color: #F0F5FA;
+    border-top-color: #2c97db;
 }
 .console-column.playstation h3 {
-    color: #003780; /* Richer, deep PlayStation blue */
-    border-bottom: 2px solid #003780;
+    color: #ffffff;
+    border-bottom: 2px solid #2c97db;
 }
+.console-column.playstation li {
+    color: #2c97db;
+}
+
 .console-column.xbox-sega {
-    border-top-color: #107C10;
-    background-color: #F2F9F2;
+    border-top-color: #38AF5F;
 }
 .console-column.xbox-sega h3 {
-    color: #0D640D; /* Richer, deep Xbox green */
-    border-bottom: 2px solid #0D640D;
+    color: #ffffff;
+    border-bottom: 2px solid #38AF5F;
+}
+.console-column.xbox-sega li {
+    color: #38AF5F;
 }
 
 /* Responsive Design: Stacks columns on mobile screens */
@@ -466,23 +480,33 @@
         </nav>
     </header>
 
-    <!-- Site Offerings Grid Sections -->
-    <main class="main-content">
-        
-        <!-- Entertainment Section -->
-        <h2 id="entertainment" class="section-title neon-text-green">What We Offer</h2>
-        <div class="grid-container">
-            <div class="card">
-                <h3>Throwback Parties</h3>
-                <p>Host the ultimate birthday or corporate gathering with custom retro hardware configurations, classic software, and high-energy multi-player options.</p>
+    <!-- Party Bundles Section -->
+        <h2 id="party-bundles" class="section-title neon-text-green">Party Bundles</h2>
+    <section id="party-bundles" style="text-align: center; padding: 50px 20px; font-family: 'Arial', sans-serif; background-color: #121214; color: #e04c8e;">
+        <div class="bundle-grid">
+            <div class="bundle-card">
+                <h3>4 Consoles</h3>
+                <p>2 Hours of Gaming</p>
+                <div class="price">$250</div>
+                <p class="details">+$50 each additional hour</p>
             </div>
-            <div class="card">
-                <h3>Tournaments</h3>
-                <p>Compete for prizes and bragging rights in our regularly scheduled local gaming brackets. From retro fighting games to modern competitive multiplayer.</p>
+            <div class="bundle-card">
+                <h3>6 Consoles</h3>
+                <p>3 Hours of Gaming</p>
+                <div class="price">$375</div>
+                <p class="details">+$75 each additional hour</p>
             </div>
-            <div class="card">
-                <h3>Community Events</h3>
-                <p>Join our interactive pop-up game nights. Perfect for schools, festivals, or local venues looking to bring people together over timeless gaming classics.</p>
+            <div class="bundle-card">
+                <h3>8 Consoles</h3>
+                <p>4 Hours of Gaming</p>
+                <div class="price">$575</div>
+                <p class="details">+$100 each additional hour</p>
+            </div>
+            <div class="bundle-card">
+                <h3>10 Consoles</h3>
+                <p>4 Hours of Gaming</p>
+                <div class="price">$800</div>
+                <p class="details">+$100 each additional hour</p>
             </div>
         </div>
 
@@ -525,40 +549,39 @@
 </div>
 </section>
 
-    <!-- Party Bundles Section -->
-        <h2 id="party-bundles" class="section-title neon-text-green">Party Bundles</h2>
-    <section id="party-bundles" style="text-align: center; padding: 50px 20px; font-family: 'Arial', sans-serif; background-color: #121214; color: #e04c8e;">
-        <div class="bundle-grid">
-            <div class="bundle-card">
-                <h3>4 Consoles</h3>
-                <p>2 Hours of Gaming</p>
-                <div class="price">$250</div>
-                <p class="details">+$50 each additional hour</p>
+    <!-- Site Offerings Grid Sections -->
+    <main class="main-content">
+        
+        <!-- Entertainment Section -->
+        <h2 id="entertainment" class="section-title neon-text-green">What We Offer</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Throwback Parties</h3>
+                <p>Host the ultimate birthday or corporate gathering with custom retro hardware configurations, classic software, and high-energy multi-player options.</p>
             </div>
-            <div class="bundle-card">
-                <h3>6 Consoles</h3>
-                <p>3 Hours of Gaming</p>
-                <div class="price">$375</div>
-                <p class="details">+$75 each additional hour</p>
+            <div class="card">
+                <h3>Tournaments</h3>
+                <p>Compete for prizes and bragging rights in our regularly scheduled local gaming brackets. From retro fighting games to modern competitive multiplayer.</p>
             </div>
-            <div class="bundle-card">
-                <h3>8 Consoles</h3>
-                <p>4 Hours of Gaming</p>
-                <div class="price">$575</div>
-                <p class="details">+$100 each additional hour</p>
+            <div class="card">
+                <h3>Community Events</h3>
+                <p>Join our interactive pop-up game nights. Perfect for schools, festivals, or local venues looking to bring people together over timeless gaming classics.</p>
             </div>
-            <div class="bundle-card">
-                <h3>10 Consoles</h3>
-                <p>4 Hours of Gaming</p>
-                <div class="price">$800</div>
-                <p class="details">+$100 each additional hour</p>
-            </div>
-        </div>
-        <a href="contact.html" class="btn-action">Book Your Party Now</a>
+    </div>
+       <div class="button-container">
+      <a href="contact.html" class="btn-action" >Book Your Party Now</a>
     </section>
     </div>
 </section>
-    <footer>
+    <footer>            
+        <!-- Direct Contact Links -->
+            <p style="margin: 10px 0;">✉️ <strong>Email:</strong> <a href="mailto:NostalgicNightsBooking@gmail.com" style="color: #38AF5F; text-decoration: none;">NostalgicNightsBooking@gmail.com</a></p>
+        </div>      
+        <!-- Social Media Links -->
+            <a href="https://www.facebook.com/nostalgicnightsentertainment/" target="_blank" style="display: inline-block; margin: 0 10px; color: #2c97db; text-decoration: none; font-weight: bold;">📘 Facebook</a>
+        </div>
+            <a href="https://www.instagram.com/nostalgicnightsentertainment/" target="_blank" style="display: inline-block; margin: 0 10px; color: #e04c8e; text-decoration: none; font-weight: bold;">📸 Instagram</a>
+        </div>
         <p>© 2026 Nostalgic Nights Entertainment</p>
     </footer>
 </body>
