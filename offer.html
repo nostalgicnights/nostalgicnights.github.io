@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nostalgic Nights Entertainment | Gaming Parties & Events</title>
+    <style>
+        /* Base Styling & Theme Colors */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Rubik Mono One', sans-serif;
+            background-color: #121214;
+            color: #eeeeee;
+            line-height: 1.6;
+        }
+
+        /* Neon Glow Effects matching the Logo */
+        .neon-text-green {
+            color: #38AF5F;
+            text-shadow: 0 0 5px #38AF5F, 0 0 15px #38AF5F;
+        }
+        .neon-text-pink {
+            color: #e04c8e;
+            text-shadow: 0 0 5px #e04c8e, 0 0 15px #e04c8e;
+        }
+        .neon-text-blue {
+            color: #2c97db;
+            text-shadow: 0 0 5px #2c97db, 0 0 15px #2c97db;
+        }
+
+        /* Layout Structure */
+        header {
+            background-color: #1a1a1e;
+            border-bottom: 2px solid #e04c8e;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-left: 2rem;
+        }
+        nav ul li a {
+            color: #eeeeee;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #2c97db;
+        }
+
+        /* Hero Landing Section */
+        .hero {
+            background: radial-gradient(circle, #25182e 0%, #121214 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+        .hero-logo-placeholder {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto 2rem auto;
+            border: 3px dashed #e04c8e;
+            padding: 2rem;
+            border-radius: 12px;
+            background-color: #1a1a1e;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .hero h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .hero .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            font-weight: 500;
+        }
+        .btn-action {
+            display: inline-block;
+            background-color: transparent;
+            color: #38AF5F;
+            border: 2px solid #38AF5F;
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-action:hover {
+            background-color: #38AF5F;
+            color: #121214;
+            box-shadow: 0 0 20px #38AF5F;
+        }
+
+        /* Services Columns */
+        .main-content {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+        .card {
+            background-color: #1a1a1e;
+            border: 1px solid #333;
+            border-top: 4px solid #2c97db;
+            border-radius: 8px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #2c97db;
+            box-shadow: 0 5px 15px rgba(0, 229, 255, 0.1);
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        .card p {
+            color: #aaaaaa;
+            font-size: 1rem;
+        }
+
+        /* Booking / Contact Form Section */
+        .booking-section {
+            background-color: #1a1a1e;
+            border: 2px solid #2c97db;
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            max-width: 700px;
+            margin: 0rem auto 5rem auto;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        .form-group label {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            color: #2c97db;
+        }
+        .form-control {
+            background-color: #121214;
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 0.8rem 1rem;
+            color: #eeeeee;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: #2c97db;
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+        }
+        select.form-control {
+            cursor: pointer;
+        }
+        .btn-submit {
+            background-color: transparent;
+            color: #e04c8e;
+            border: 2px solid #e04c8e;
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.2);
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        .btn-submit:hover {
+            background-color: #e04c8e;
+            color: #121214;
+            box-shadow: 0 0 20px #e04c8e;
+        }
+
+        /* Footer Element */
+        footer {
+            background-color: #09090b;
+            border-top: 1px solid #333;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        footer p {
+            color: #aaaaaa;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .social-links {
+            margin: 1.5rem 0;
+        }
+        .social-links a {
+            color: #eeeeee;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid #333;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #2c97db;
+            border-color: #2c97db;
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+        }
+        .copyright {
+            color: #666666 !important;
+            font-size: 0.85rem !important;
+            margin-top: 1.5rem;
+        }
+
+        /* New Photo Gallery Grid Styles */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            background: #1e1e24;
+            border: 1px solid #334155;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-caption {
+            padding: 1rem;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            text-align: center;
+        }
+
+        /* --- Pricing & Bundle Grid --- */
+        .bundle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .bundle-card {
+            background: #11141a;
+            border: 1px solid #1f2833;
+            border-radius: 8px;
+            padding: 25px 20px;
+            text-align: center;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+        .bundle-card:hover {
+            border-color: #2c97db;
+            transform: scale(1.02);
+        }
+        .bundle-card h3 {
+            color: #38AF5F;
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+        .price {
+            font-size: 2rem;
+            color: #2c97db;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        .details {
+            font-size: 0.9rem;
+            color: #2c97db;
+            margin-bottom: 0;
+            font-style: italic;
+        }
+/* Container for the entire console section */
+#our-consoles {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#our-consoles h2 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;  /* Extra bold */
+    color: #111111;    /* Deep, dark gray */
+    margin-bottom: 10px;
+}
+
+#our-consoles p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* The Grid Layout */
+.console-groups {
+    display: grid;
+    /* Creates 3 equal columns on large screens */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px;
+    text-align: left;
+    margin-top: 20px;
+}
+
+/* Individual brand columns (Nintendo, PlayStation, Xbox/Sega) */
+.console-column {
+    background-color: #f9f9f9;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-top: 6px solid #333; 
+    transition: transform 0.2s ease;
+}
+
+.console-column:hover {
+    transform: translateY(-5px);
+}
+
+.console-column h3 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+}
+
+.console-column ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.console-column li {
+    color: #111111;    /* Stark, dark font color */
+    font-weight: 600;  /* Stronger weight so the text pops */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    padding: 10px 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08); /* Subtle dividers */
+}
+
+.console-column li:last-child {
+    border-bottom: none;
+}
+
+.console-column.nintendo {
+    border-top-color: #E60012;
+    background-color: #FFF5F5;
+}
+.console-column.nintendo h3 {
+    color: #C30010; /* Richer, deep Nintendo red */
+    border-bottom: 2px solid #C30010;
+}
+
+.console-column.playstation {
+    border-top-color: #00439C;
+    background-color: #F0F5FA;
+}
+.console-column.playstation h3 {
+    color: #003780; /* Richer, deep PlayStation blue */
+    border-bottom: 2px solid #003780;
+}
+.console-column.xbox-sega {
+    border-top-color: #107C10;
+    background-color: #F2F9F2;
+}
+.console-column.xbox-sega h3 {
+    color: #0D640D; /* Richer, deep Xbox green */
+    border-bottom: 2px solid #0D640D;
+}
+
+/* Responsive Design: Stacks columns on mobile screens */
+@media (max-width: 768px) {
+    .console-groups {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Top Sticky Navigation -->
+    <header>
+        <nav>
+            <div class="logo-text">
+                <span class="neon-text-green">Nostalgic</span> 
+                <span class="neon-text-blue">Nights</span>
+                <span class="neon-text-pink">Entertainment</span>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="offer.html">What We Offer</a></li>
+                <li><a href="gallery.html">Event Gallery</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Site Offerings Grid Sections -->
+    <main class="main-content">
+        
+        <!-- Entertainment Section -->
+        <h2 id="entertainment" class="section-title neon-text-green">What We Offer</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Throwback Parties</h3>
+                <p>Host the ultimate birthday or corporate gathering with custom retro hardware configurations, classic software, and high-energy multi-player options.</p>
+            </div>
+            <div class="card">
+                <h3>Tournaments</h3>
+                <p>Compete for prizes and bragging rights in our regularly scheduled local gaming brackets. From retro fighting games to modern competitive multiplayer.</p>
+            </div>
+            <div class="card">
+                <h3>Community Events</h3>
+                <p>Join our interactive pop-up game nights. Perfect for schools, festivals, or local venues looking to bring people together over timeless gaming classics.</p>
+            </div>
+        </div>
+
+        <!-- Console Section -->
+        <h2 id="our-consoles" class="section-title neon-text-green">Our Consoles</h2>
+    <p>We provide authentic hardware and classic games across generations. Choose your favorites for your event!</p>
+    
+<div class="console-groups">
+    <!-- Nintendo Column -->
+    <div class="console-column nintendo">
+        <h3>Nintendo</h3>
+        <ul>
+            <li>Nintendo (NES)</li>
+            <li>Super Nintendo (SNES)</li>
+            <li>N64</li>
+            <li>GameCube</li>
+            <li>Nintendo Wii</li>
+        </ul>
+    </div>
+
+    <!-- PlayStation Column -->
+    <div class="console-column playstation">
+        <h3>PlayStation</h3>
+        <ul>
+            <li>PS1</li>
+            <li>PS2</li>
+            <li>PS3</li>
+        </ul>
+    </div>
+
+    <!-- Xbox & Sega Column -->
+    <div class="console-column xbox-sega">
+        <h3>Xbox & Sega</h3>
+        <ul>
+            <li>Xbox</li>
+            <li>Xbox 360</li>
+            <li>Sega Genesis</li>
+        </ul>
+    </div>
+</div>
+</section>
+
+    <!-- Party Bundles Section -->
+        <h2 id="party-bundles" class="section-title neon-text-green">Party Bundles</h2>
+    <section id="party-bundles" style="text-align: center; padding: 50px 20px; font-family: 'Arial', sans-serif; background-color: #121214; color: #e04c8e;">
+        <div class="bundle-grid">
+            <div class="bundle-card">
+                <h3>4 Consoles</h3>
+                <p>2 Hours of Gaming</p>
+                <div class="price">$250</div>
+                <p class="details">+$50 each additional hour</p>
+            </div>
+            <div class="bundle-card">
+                <h3>6 Consoles</h3>
+                <p>3 Hours of Gaming</p>
+                <div class="price">$375</div>
+                <p class="details">+$75 each additional hour</p>
+            </div>
+            <div class="bundle-card">
+                <h3>8 Consoles</h3>
+                <p>4 Hours of Gaming</p>
+                <div class="price">$575</div>
+                <p class="details">+$100 each additional hour</p>
+            </div>
+            <div class="bundle-card">
+                <h3>10 Consoles</h3>
+                <p>4 Hours of Gaming</p>
+                <div class="price">$800</div>
+                <p class="details">+$100 each additional hour</p>
+            </div>
+        </div>
+        <a href="contact.html" class="btn-action">Book Your Party Now</a>
+    </section>
+    </div>
+</section>
+    <footer>
+        <p>© 2026 Nostalgic Nights Entertainment</p>
+    </footer>
+</body>
+</html>
