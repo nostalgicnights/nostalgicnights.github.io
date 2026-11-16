@@ -733,12 +733,6 @@
       e.preventDefault();
       const actionUrl = bookingForm.getAttribute('action');
 
-      if (actionUrl.includes('mkjrjvel')) {
-        formStatus.className = 'form-status success';
-        formStatus.textContent = '1UP! Demo submission received. Replace mkjrjvel in the HTML to send live emails.';
-        return;
-      }
-
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending...';
 
