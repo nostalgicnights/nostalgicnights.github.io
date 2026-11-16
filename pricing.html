@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nostalgic Nights Entertainment | Retro Gaming</title>
+  <style>
+    :root {
+      --bg-dark: #07070a;
+      --bg-card: #111218;
+      --neon-green: #22b14c;
+      --neon-pink: #d94c86;
+      --neon-blue: #2b7bb9;
+      --neon-yellow: #f2c922;
+      --text-main: #f4f4f6;
+      --text-muted: #a3a8b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(7, 7, 10, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--neon-blue);
+      padding: 0.9rem 1.25rem;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-title {
+      font-family: "Courier New", Courier, monospace;
+      font-weight: 900;
+      font-size: 1.05rem;
+      letter-spacing: 1px;
+      color: var(--neon-green);
+      text-shadow: 2px 2px 0px #000, 0 0 8px rgba(34, 177, 76, 0.6);
+      text-decoration: none;
+      line-height: 1.3;
+    }
+
+    .brand-title span {
+      display: block;
+      font-family: inherit;
+      font-size: 0.72rem;
+      letter-spacing: 3px;
+      color: var(--text-main);
+      text-shadow: 0 0 6px var(--neon-pink);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--neon-yellow);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 2px solid var(--neon-pink);
+      color: var(--text-main);
+      padding: 0.4rem 0.65rem;
+      border-radius: 6px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 3rem 1.25rem 4rem;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-logo {
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+      margin: 0 auto 1.5rem;
+      display: block;
+      filter: drop-shadow(0 0 18px rgba(43, 123, 185, 0.35));
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(217, 76, 134, 0.15);
+      border: 1px solid var(--neon-pink);
+      color: var(--neon-pink);
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 650px;
+      margin: 0 auto 2rem;
+    }
+
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 1.75rem;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: transform 0.15s, box-shadow 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background-color: var(--neon-green);
+      color: #050505;
+      box-shadow: 0 0 15px rgba(34, 177, 76, 0.5);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 25px rgba(34, 177, 76, 0.85);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--text-main);
+      border: 2px solid var(--neon-pink);
+      box-shadow: 0 0 12px rgba(217, 76, 134, 0.3);
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(217, 76, 134, 0.15);
+    }
+
+    /* Sections */
+    section {
+      padding: 3.5rem 1.25rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: "Courier New", Courier, monospace;
+      font-weight: 900;
+      font-size: clamp(1.3rem, 4vw, 1.85rem);
+      letter-spacing: 2px;
+      text-align: center;
+      margin-bottom: 0.75rem;
+      color: var(--neon-yellow);
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* Console Roster Strip */
+    .console-strip {
+      background: var(--bg-card);
+      border-top: 2px solid var(--neon-pink);
+      border-bottom: 2px solid var(--neon-blue);
+      padding: 2rem 1.25rem;
+      text-align: center;
+    }
+
+    .console-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      max-width: 900px;
+      margin: 1rem auto 0;
+    }
+
+    .console-pill {
+      background: #1a1c26;
+      border: 1px solid var(--neon-blue);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* Grid Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: 14px;
+      padding: 1.75rem;
+      border: 2px solid var(--neon-blue);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s;
+    }
+
+    .card:nth-child(2) {
+      border-color: var(--neon-pink);
+    }
+
+    .card:nth-child(3) {
+      border-color: var(--neon-green);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--neon-yellow);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .price {
+      font-family: "Courier New", Courier, monospace;
+      font-weight: 900;
+      font-size: 1.65rem;
+      color: var(--neon-green);
+      margin: 0.6rem 0 0.9rem;
+    }
+
+    .price span {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      font-size: 0.92rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-list li {
+      margin-bottom: 0.55rem;
+      padding-left: 1.4rem;
+      position: relative;
+    }
+
+    .feature-list li::before {
+      content: "?";
+      position: absolute;
+      left: 0;
+      color: var(--neon-green);
+      font-size: 0.75rem;
+      top: 3px;
+    }
+
+    /* Comparison Table Wrapper for Mobile Scroll */
+    .table-wrapper {
+      margin-top: 2.5rem;
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 2px solid var(--neon-blue);
+      background: var(--bg-card);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid #222533;
+    }
+
+    th {
+      background: #161822;
+      color: var(--neon-yellow);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Photo Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .gallery-item {
+      background: var(--bg-card);
+      border: 2px solid var(--neon-pink);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .gallery-item:nth-child(even) {
+      border-color: var(--neon-blue);
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.02);
+      border-color: var(--neon-yellow);
+    }
+
+    .gallery-img-box {
+      width: 100%;
+      height: 210px;
+      background: #181a24;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-caption {
+      padding: 0.85rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    /* Booking Form */
+    .booking-box {
+      background: var(--bg-card);
+      border: 2px solid var(--neon-green);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.85rem;
+      border-radius: 8px;
+      border: 1px solid #2e3244;
+      background: #090a0f;
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--neon-yellow);
+    }
+
+    .form-status {
+      display: none;
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .form-status.success {
+      display: block;
+      background: rgba(34, 177, 76, 0.15);
+      border: 1px solid var(--neon-green);
+      color: var(--neon-green);
+    }
+
+    .form-status.error {
+      display: block;
+      background: rgba(217, 76, 134, 0.15);
+      border: 1px solid var(--neon-pink);
+      color: var(--neon-pink);
+    }
+
+    /* Footer & Social Media Links */
+    footer {
+      text-align: center;
+      padding: 3rem 1.25rem;
+      border-top: 2px solid var(--neon-blue);
+      background: var(--bg-card);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .social-heading {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.85rem;
+      color: var(--neon-yellow);
+      margin-bottom: 1.25rem;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.9rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.15rem;
+      border-radius: 8px;
+      background: #090a0f;
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 1.5px solid var(--neon-pink);
+      transition: transform 0.15s, box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .social-btn:nth-child(2) {
+      border-color: var(--neon-blue);
+    }
+
+    .social-btn:nth-child(3) {
+      border-color: var(--neon-green);
+    }
+
+    .social-btn:nth-child(4) {
+      border-color: var(--neon-yellow);
+    }
+
+    .social-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 14px rgba(217, 76, 134, 0.45);
+    }
+
+    .social-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #0c0d12;
+        border-bottom: 2px solid var(--neon-pink);
+        padding: 1rem 1.25rem;
+        gap: 1rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .cta-group {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .social-links {
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 320px;
+        margin: 0 auto 1.75rem;
+      }
+
+      .social-btn {
+        justify-content: center;
+      }
+
+    /* Mobile Adjustments */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #0c0d12;
+        border-bottom: 2px solid var(--neon-pink);
+        padding: 1rem 1.25rem;
+        gap: 1rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .cta-group {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand-title">
+        NOSTALGIC NIGHTS
+        <span>ENTERTAINMENT</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">&#9776;</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="consoles.html">Consoles</a></li>
+        <li><a href="book.html">Book Now</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section id="pricing">
+      <h2 class="section-title">PACKAGES &amp; PRICING</h2>
+      <p class="section-subtitle">Transparent pricing with full setup and teardown included. We can edit rates and times to fit your event.</p>
+
+      <div class="grid">
+        <div class="card">
+          <div>
+            <span class="card-tag">Starter</span>
+            <h3>Co-Op Lounge</h3>
+            <div class="price">$250 <span>/ 2 hours</span></div>
+            <p>Ideal for intimate birthday parties, graduation open houses, and smaller gatherings.</p>
+            <ul class="feature-list">
+              <li>4 TV &amp; Console Stations</li>
+              <li>Up to 16 simultaneous players</li>
+            </ul>
+          </div>
+          <a href="book.html" class="btn btn-secondary select-pkg" data-pkg="Co-Op Lounge ($250)" style="text-align: center;">Select Co-Op Lounge</a>
+        </div>
+
+        <div class="card">
+          <div>
+            <span class="card-tag">Most Popular</span>
+            <h3>Arcade Night</h3>
+            <div class="price">$375 <span>/ 3 hours</span></div>
+            <p>Our signature setup for bars, breweries, wedding receptions, and large parties.</p>
+            <ul class="feature-list">
+              <li>6 TV &amp; Console Stations</li>
+              <li>Up to 24 simultaneous players</li>
+            </ul>
+          </div>
+          <a href="book.html" class="btn btn-primary select-pkg" data-pkg="Arcade Night ($375)" style="text-align: center;">Select Arcade Night</a>
+        </div>
+
+        <div class="card">
+          <div>
+            <span class="card-tag">Full Venue Takeover</span>
+            <h3>Boss Level</h3>
+            <div class="price">$575+ <span>/ 4 hours</span></div>
+            <p>Built for festivals, corporate events, campus nights, and recurring venue partnerships.</p>
+            <ul class="feature-list">
+              <li>8+ TV &amp; Console Stations</li>
+            </ul>
+          </div>
+          <a href="book.html" class="btn btn-secondary select-pkg" data-pkg="Boss Level ($575+)" style="text-align: center;">Request Custom Quote</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="social-heading">FOLLOW THE NOSTALGIA</div>
+    <div class="social-links">
+      <a href="https://instagram.com/NostalgicNightsEntertainment" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Instagram
+      </a>
+      <a href="https://facebook.com/NostalgicNightsEntertainment" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+        Facebook
+      </a>
+    </div>
+    <p>&copy; <span id="year"></span> Nostalgic Nights Entertainment. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Auto-select package in form when clicking a pricing card button
+    document.querySelectorAll('.select-pkg').forEach(button => {
+      button.addEventListener('click', () => {
+        const chosenPkg = button.getAttribute('data-pkg');
+        const selectEl = document.getElementById('packageSelect');
+        if (selectEl && chosenPkg) {
+          selectEl.value = chosenPkg;
+        }
+      });
+    });
+
+    // Form Submission Handler
+    const bookingForm = document.getElementById('bookingForm');
+    const formStatus = document.getElementById('formStatus');
+    const submitBtn = document.getElementById('submitBtn');
+
+    bookingForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const actionUrl = bookingForm.getAttribute('action');
+
+      if (actionUrl.includes('mkjrjvel')) {
+        formStatus.className = 'form-status success';
+        formStatus.textContent = '1UP! Demo submission received. Replace mkjrjvel in the HTML to send live emails.';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        const response = await fetch(actionUrl, {
+          method: 'POST',
+          body: new FormData(bookingForm),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          formStatus.className = 'form-status success';
+          formStatus.textContent = '1UP! Your inquiry has been sent. We will reach out shortly!';
+          bookingForm.reset();
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch (error) {
+        formStatus.className = 'form-status error';
+        formStatus.textContent = 'Game Over! Something went wrong sending your request. Please try again.';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Event Inquiry';
+      }
+    });
+
+    // Current Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
