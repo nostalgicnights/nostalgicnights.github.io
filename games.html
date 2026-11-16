@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Library | Nostalgic Nights Entertainment</title>
+  <style>
+    :root {
+      --bg-dark: #07070a;
+      --bg-card: #111218;
+      --neon-green: #22b14c;
+      --neon-pink: #d94c86;
+      --neon-blue: #2b7bb9;
+      --neon-yellow: #f2c922;
+      --text-main: #f4f4f6;
+      --text-muted: #a3a8b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+      padding-bottom: 4rem;
+    }
+
+    header {
+      background: #0c0d13;
+      border-bottom: 2px solid var(--neon-blue);
+      padding: 1rem 1.25rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-title {
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      color: var(--neon-green);
+      text-shadow: 0 0 8px rgba(34, 177, 76, 0.6);
+      text-decoration: none;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .brand-title span {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      color: var(--text-main);
+      text-shadow: 0 0 6px var(--neon-pink);
+    }
+
+    .btn-sm {
+      padding: 0.55rem 0.95rem;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .back-btn {
+      background: rgba(217, 76, 134, 0.15);
+      border: 1px solid var(--neon-pink);
+      color: var(--text-main);
+      text-decoration: none;
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .btn-book {
+      background: var(--neon-green);
+      color: #050505;
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.75rem 1.25rem 1rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 1.65rem;
+      color: var(--neon-yellow);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .controls {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem 1.25rem;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border-radius: 10px;
+      border: 2px solid var(--neon-blue);
+      background: var(--bg-card);
+      color: var(--text-main);
+      font-size: 1rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--neon-yellow);
+    }
+
+    .tabs-scroll {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .tab-btn {
+      background: var(--bg-card);
+      border: 1px solid #2b3044;
+      color: var(--text-main);
+      padding: 0.5rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .tab-btn.active {
+      background: var(--neon-green);
+      color: #050505;
+      border-color: var(--neon-green);
+    }
+
+    .status-bar {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem 1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .catalog {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .console-group {
+      margin-bottom: 2rem;
+    }
+
+    .console-group.hidden {
+      display: none;
+    }
+
+    .console-heading {
+      font-size: 1.2rem;
+      color: var(--neon-pink);
+      border-bottom: 1px solid #262a3b;
+      padding-bottom: 0.45rem;
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .count-pill {
+      background: rgba(43, 123, 185, 0.25);
+      border: 1px solid var(--neon-blue);
+      color: var(--text-main);
+      font-size: 0.75rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 0.65rem;
+    }
+
+    .game-card {
+      background: var(--bg-card);
+      border: 1px solid #222636;
+      border-left: 3px solid var(--neon-green);
+      border-radius: 8px;
+      padding: 0.75rem 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .game-card.hidden {
+      display: none;
+    }
+
+    .game-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    .console-badge {
+      font-size: 0.72rem;
+      background: #1b1e2b;
+      color: var(--neon-yellow);
+      padding: 0.2rem 0.5rem;
+      border-radius: 5px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .empty-msg {
+      display: none;
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: var(--text-muted);
+      background: var(--bg-card);
+      border-radius: 12px;
+      border: 1px dashed var(--neon-pink);
+    }
+
+    .cta-footer {
+      max-width: 1100px;
+      margin: 2rem auto 0;
+      padding: 0 1.25rem;
+      text-align: center;
+    }
+
+    .cta-box {
+      background: var(--bg-card);
+      border: 2px solid var(--neon-green);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .cta-box h3 {
+      margin-bottom: 0.4rem;
+      font-size: 1.15rem;
+    }
+
+    .cta-box p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .book-btn {
+      display: inline-block;
+      background: var(--neon-green);
+      color: #050505;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-wrap">
+      <a href="index.html" class="brand-title">
+        NOSTALGIC NIGHTS
+        <span>ENTERTAINMENT</span>
+      </a>
+      <a href="index.html" class="btn-sm back-btn">← Main Site</a>
+      <a href="book.html" class="btn-sm btn-book">Book Now</a>
+    </div>
+  </header>
+
+  <div class="hero">
+    <h1>Retro Game Library</h1>
+    <p>Browse all 193 available titles across 12 classic and modern consoles.</p>
+  </div>
+
+  <div class="controls">
+    <input type="search" id="searchInput" class="search-input" placeholder="Search games (e.g., Mario, Halo, Spyro)..." aria-label="Search games" />
+    <div class="tabs-scroll" id="tabsContainer">
+      <button class="tab-btn active" type="button" data-filter="all">All</button><button class="tab-btn" type="button" data-filter="nes">NES</button><button class="tab-btn" type="button" data-filter="snes">SNES</button><button class="tab-btn" type="button" data-filter="n64">Nintendo 64</button><button class="tab-btn" type="button" data-filter="gamecube">GameCube</button><button class="tab-btn" type="button" data-filter="wii">Nintendo Wii</button><button class="tab-btn" type="button" data-filter="ps1">PS1</button><button class="tab-btn" type="button" data-filter="ps2">PS2</button><button class="tab-btn" type="button" data-filter="sega-genesis">Sega Genesis</button><button class="tab-btn" type="button" data-filter="xbox">Xbox</button><button class="tab-btn" type="button" data-filter="xbox-360">Xbox 360</button>
+    </div>
+  </div>
+
+  <div class="status-bar">
+    <span id="visibleCount">Showing 193 games</span>
+  </div>
+
+  <main class="catalog" id="catalog">
+      <div class="console-group" id="nes" data-console="nes">
+        <h2 class="console-heading">NES</span></h2>
+        <div class="games-grid">
+          <div class="game-card" data-console="nes" data-title="adventure island"><span class="game-title">Adventure Island</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="bubble bobble"><span class="game-title">Bubble Bobble</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="chip 'n dale rescue rangers"><span class="game-title">Chip 'n Dale Rescue Rangers</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="donkey kong classics"><span class="game-title">Donkey Kong Classics</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="double dragon ii"><span class="game-title">Double Dragon II</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="dr. mario"><span class="game-title">Dr. Mario</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="galaga: demons of death"><span class="game-title">Galaga: Demons of Death</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="gauntlet"><span class="game-title">Gauntlet</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="gauntlet ii"><span class="game-title">Gauntlet II</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="pac-man [tengen]"><span class="game-title">Pac-Man [Tengen]</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="q*bert"><span class="game-title">Q*bert</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="r.c. pro-am"><span class="game-title">R.C. Pro-AM</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="rampage"><span class="game-title">Rampage</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="rocket ranger"><span class="game-title">Rocket Ranger</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="super mario bros 2"><span class="game-title">Super Mario Bros 2</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="super mario bros 3"><span class="game-title">Super Mario Bros 3</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="super mario bros duck hunt world class track meet"><span class="game-title">Super Mario Bros Duck Hunt World Class Track Meet</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="super mario bros duck hunt world class track meet [red overalls]"><span class="game-title">Super Mario Bros Duck Hunt World Class Track Meet [Red Overalls]</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="tecmo bowl"><span class="game-title">Tecmo Bowl</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="tecmo nba basketball"><span class="game-title">Tecmo NBA Basketball</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="teenage mutant ninja turtles"><span class="game-title">Teenage Mutant Ninja Turtles</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="tetris"><span class="game-title">Tetris</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="the little mermaid"><span class="game-title">The Little Mermaid</span><span class="console-badge">NES</span></div>
+          <div class="game-card" data-console="nes" data-title="wwf wrestlemania challenge"><span class="game-title">WWF Wrestlemania Challenge</span><span class="console-badge">NES</span></div>
+        </div>
+      </div>
+      <div class="console-group" id="snes" data-console="snes">
+        <h2 class="console-heading">SNES</span></h2>
+        <div class="games-grid">
+          <div class="game-card" data-console="snes" data-title="animaniacs"><span class="game-title">Animaniacs</span><span class="console-badge">SNES</span></div>
+          <div class="game-card" data-console="snes" data-title="bubsy ii"><span class="game-title">Bubsy II</span><span class="console-badge">SNES</span></div>
+          <div class="game-card" data-console="snes" data-title="family feud"><span class="game-title">Family Feud</span><span class="console-badge">SNES</span></div>
+          <div class="game-card" data-console="snes" data-title="jeopardy sports edition"><span class="game-title">Jeopardy Sports Edition</span><span class="console-badge">SNES</span></div>
+          <div class="game-card" data-console="snes" data-title="ken griffey jr major league baseball"><span class="game-title">Ken Griffey Jr Major League Baseball</span><span class="console-badge">SNES</span></div>
+          <div class="game-card" data-console="snes" data-title="nba jam tournament edition"><span class="game-title">NBA Jam Tournament Edition</span><span class="console-badge">SNES</span></div>
+          <div class="game-card" data-console="snes" data-title="super black bass"><span class="game-title">Super Black Bass</span><span class="console-badge">SNES</span></div>
+          <div class="game-card" data-console="snes" data-title="super mario all-stars"><span class="game-title">Super Mario All-Stars</span><span class="console-badge">SNES</span></div>
+          <div class="game-card" data-console="snes" data-title="super mario world"><span class="game-title">Super Mario World</span><span class="console-badge">SNES</span></div>
+          <div class="game-card" data-console="snes" data-title="tiny toon adventures buster busts loose"><span class="game-title">Tiny Toon Adventures Buster Busts Loose</span><span class="console-badge">SNES</span></div>
+          <div class="game-card" data-console="snes" data-title="waialae country club"><span class="game-title">Waialae Country Club</span><span class="console-badge">SNES</span></div>
+        </div>
+      </div>
+      <div class="console-group" id="n64" data-console="n64">
+        <h2 class="console-heading">Nintendo 64</span></h2>
+        <div class="games-grid">
+          <div class="game-card" data-console="n64" data-title="007 goldeneye"><span class="game-title">007 GoldenEye</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="castlevania"><span class="game-title">Castlevania</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="conker's bad fur day"><span class="game-title">Conker's Bad Fur Day</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="cruis'n world"><span class="game-title">Cruis'n World</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="ecw hardcore revolution"><span class="game-title">ECW Hardcore Revolution</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="international superstar soccer 64"><span class="game-title">International Superstar Soccer 64</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="knockout kings 2000"><span class="game-title">Knockout Kings 2000</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="madden 2000"><span class="game-title">Madden 2000</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="madden 2001"><span class="game-title">Madden 2001</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="major league baseball featuring ken griffey jr"><span class="game-title">Major League Baseball Featuring Ken Griffey Jr</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="mario kart 64"><span class="game-title">Mario Kart 64</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="mario party 3"><span class="game-title">Mario Party 3</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="nagano winter olympics '98"><span class="game-title">Nagano Winter Olympics '98</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="nascar 99"><span class="game-title">NASCAR 99</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="nfl quarterback club 98"><span class="game-title">NFL Quarterback Club 98</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="paper mario"><span class="game-title">Paper Mario</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="pokemon snap"><span class="game-title">Pokemon Snap</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="rugrats scavenger hunt"><span class="game-title">Rugrats Scavenger Hunt</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="star wars rogue squadron"><span class="game-title">Star Wars Rogue Squadron</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="star wars shadows of the empire"><span class="game-title">Star Wars Shadows of the Empire</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="super mario 64"><span class="game-title">Super Mario 64</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="track and field 2000"><span class="game-title">Track and Field 2000</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="triple play 2000"><span class="game-title">Triple Play 2000</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="turok dinosaur hunter"><span class="game-title">Turok Dinosaur Hunter</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="waialae country club"><span class="game-title">Waialae Country Club</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="zelda majora's mask"><span class="game-title">Zelda Majora's Mask</span><span class="console-badge">Nintendo 64</span></div>
+          <div class="game-card" data-console="n64" data-title="zelda ocarina of time"><span class="game-title">Zelda Ocarina of Time</span><span class="console-badge">Nintendo 64</span></div>
+        </div>
+      </div>
+      <div class="console-group" id="gamecube" data-console="gamecube">
+        <h2 class="console-heading">GameCube</span></h2>
+        <div class="games-grid">
+          <div class="game-card" data-console="gamecube" data-title="call of duty finest hour"><span class="game-title">Call of Duty Finest Hour</span><span class="console-badge">GameCube</span></div>
+          <div class="game-card" data-console="gamecube" data-title="crash bandicoot the wrath of cortex"><span class="game-title">Crash Bandicoot The Wrath of Cortex</span><span class="console-badge">GameCube</span></div>
+          <div class="game-card" data-console="gamecube" data-title="crash tag team racing"><span class="game-title">Crash Tag Team Racing</span><span class="console-badge">GameCube</span></div>
+          <div class="game-card" data-console="gamecube" data-title="finding nemo"><span class="game-title">Finding Nemo</span><span class="console-badge">GameCube</span></div>
+          <div class="game-card" data-console="gamecube" data-title="flushed away"><span class="game-title">Flushed Away</span><span class="console-badge">GameCube</span></div>
+          <div class="game-card" data-console="gamecube" data-title="lego star wars"><span class="game-title">LEGO Star Wars</span><span class="console-badge">GameCube</span></div>
+          <div class="game-card" data-console="gamecube" data-title="lord of the rings two towers"><span class="game-title">Lord of the Rings Two Towers</span><span class="console-badge">GameCube</span></div>
+          <div class="game-card" data-console="gamecube" data-title="luigi's mansion [player's choice]"><span class="game-title">Luigi's Mansion [Player's Choice]</span><span class="console-badge">GameCube</span></div>
+          <div class="game-card" data-console="gamecube" data-title="mario kart double dash"><span class="game-title">Mario Kart Double Dash</span><span class="console-badge">GameCube</span></div>
+          <div class="game-card" data-console="gamecube" data-title="need for speed carbon"><span class="game-title">Need for Speed Carbon</span><span class="console-badge">GameCube</span></div>
+          <div class="game-card" data-console="gamecube" data-title="over the hedge"><span class="game-title">Over the Hedge</span><span class="console-badge">GameCube</span></div>
+          <div class="game-card" data-console="gamecube" data-title="shrek superslam"><span class="game-title">Shrek Superslam</span><span class="console-badge">GameCube</span></div>
+          <div class="game-card" data-console="gamecube" data-title="sonic riders"><span class="game-title">Sonic Riders</span><span class="console-badge">GameCube</span></div>
+          <div class="game-card" data-console="gamecube" data-title="spongebob squarepants battle for bikini bottom"><span class="game-title">SpongeBob SquarePants Battle for Bikini Bottom</span><span class="console-badge">GameCube</span></div>
+          <div class="game-card" data-console="gamecube" data-title="spongebob squarepants the movie"><span class="game-title">SpongeBob SquarePants The Movie</span><span class="console-badge">GameCube</span></div>
+          <div class="game-card" data-console="gamecube" data-title="spyro a hero's tail"><span class="game-title">Spyro A Hero's Tail</span><span class="console-badge">GameCube</span></div>
+          <div class="game-card" data-console="gamecube" data-title="super smash bros melee"><span class="game-title">Super Smash Bros Melee</span><span class="console-badge">GameCube</span></div>
+          <div class="game-card" data-console="gamecube" data-title="tmnt"><span class="game-title">TMNT</span><span class="console-badge">GameCube</span></div>
+        </div>
+      </div>
+      <div class="console-group" id="wii" data-console="wii">
+        <h2 class="console-heading">Nintendo Wii</span></h2>
+        <div class="games-grid">
+          <div class="game-card" data-console="wii" data-title="amf bowling world lanes"><span class="game-title">AMF Bowling World Lanes</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="call of duty black ops"><span class="game-title">Call of Duty Black Ops</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="cars mater-national championship"><span class="game-title">Cars Mater-National Championship</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="daisy fuentes pilates"><span class="game-title">Daisy Fuentes Pilates</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="disney infinity [game only]"><span class="game-title">Disney Infinity [Game Only]</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="high school musical sing it"><span class="game-title">High School Musical Sing It</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="jeopardy"><span class="game-title">Jeopardy</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="just dance"><span class="game-title">Just Dance</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="just dance 2014"><span class="game-title">Just Dance 2014</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="just dance 3"><span class="game-title">Just Dance 3</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="lego indiana jones 2: the adventure continues"><span class="game-title">LEGO Indiana Jones 2: The Adventure Continues</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="mario and sonic at the olympic games"><span class="game-title">Mario and Sonic at the Olympic Games</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="mario kart wii"><span class="game-title">Mario Kart Wii</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="michael jackson the experience"><span class="game-title">Michael Jackson The Experience</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="mysims kingdom"><span class="game-title">MySims Kingdom</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="nerf n-strike elite"><span class="game-title">NERF N-Strike Elite</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="no more heroes"><span class="game-title">No More Heroes</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="pac-man party [walmart exclusive]"><span class="game-title">Pac-Man Party [Walmart Exclusive]</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="press your luck: 2010 edition"><span class="game-title">Press Your Luck: 2010 Edition</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="six flags fun park"><span class="game-title">Six Flags Fun Park</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="space camp"><span class="game-title">Space Camp</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="spongebob squarepants featuring nicktoons globs of doom"><span class="game-title">SpongeBob SquarePants Featuring Nicktoons Globs of Doom</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="spongebob's truth or square"><span class="game-title">SpongeBob's Truth or Square</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="star wars the force unleashed"><span class="game-title">Star Wars The Force Unleashed</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="super mario galaxy"><span class="game-title">Super Mario Galaxy</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="super smash bros. brawl"><span class="game-title">Super Smash Bros. Brawl</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="the princess and the frog"><span class="game-title">The Princess and the Frog</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="tiger woods 2009 all-play"><span class="game-title">Tiger Woods 2009 All-Play</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="toy story 3: the video game"><span class="game-title">Toy Story 3: The Video Game</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="wii fit plus"><span class="game-title">Wii Fit Plus</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="wii play"><span class="game-title">Wii Play</span><span class="console-badge">Nintendo Wii</span></div>
+          <div class="game-card" data-console="wii" data-title="wii sports"><span class="game-title">Wii Sports</span><span class="console-badge">Nintendo Wii</span></div>
+        </div>
+      </div>
+      <div class="console-group" id="ps1" data-console="ps1">
+        <h2 class="console-heading">PS1</span></h2>
+        <div class="games-grid">
+          <div class="game-card" data-console="ps1" data-title="1xtreme"><span class="game-title">1Xtreme</span><span class="console-badge">PS1</span></div>
+          <div class="game-card" data-console="ps1" data-title="2xtreme"><span class="game-title">2Xtreme</span><span class="console-badge">PS1</span></div>
+          <div class="game-card" data-console="ps1" data-title="ape escape"><span class="game-title">Ape Escape</span><span class="console-badge">PS1</span></div>
+          <div class="game-card" data-console="ps1" data-title="croc 2"><span class="game-title">Croc 2</span><span class="console-badge">PS1</span></div>
+          <div class="game-card" data-console="ps1" data-title="frogger"><span class="game-title">Frogger</span><span class="console-badge">PS1</span></div>
+          <div class="game-card" data-console="ps1" data-title="namco museum volume 3"><span class="game-title">Namco Museum Volume 3</span><span class="console-badge">PS1</span></div>
+          <div class="game-card" data-console="ps1" data-title="nascar 98"><span class="game-title">NASCAR 98</span><span class="console-badge">PS1</span></div>
+          <div class="game-card" data-console="ps1" data-title="rampage world tour"><span class="game-title">Rampage World Tour</span><span class="console-badge">PS1</span></div>
+          <div class="game-card" data-console="ps1" data-title="shrek treasure hunt"><span class="game-title">Shrek Treasure Hunt</span><span class="console-badge">PS1</span></div>
+          <div class="game-card" data-console="ps1" data-title="spyro ripto's rage"><span class="game-title">Spyro Ripto's Rage</span><span class="console-badge">PS1</span></div>
+          <div class="game-card" data-console="ps1" data-title="spyro the dragon"><span class="game-title">Spyro the Dragon</span><span class="console-badge">PS1</span></div>
+          <div class="game-card" data-console="ps1" data-title="spyro year of the dragon"><span class="game-title">Spyro Year of the Dragon</span><span class="console-badge">PS1</span></div>
+          <div class="game-card" data-console="ps1" data-title="star wars phantom menace [greatest hits]"><span class="game-title">Star Wars Phantom Menace [Greatest Hits]</span><span class="console-badge">PS1</span></div>
+          <div class="game-card" data-console="ps1" data-title="the wild thornberrys animal adventures"><span class="game-title">The Wild Thornberrys Animal Adventures</span><span class="console-badge">PS1</span></div>
+          <div class="game-card" data-console="ps1" data-title="tomb raider [greatest hits]"><span class="game-title">Tomb Raider [Greatest Hits]</span><span class="console-badge">PS1</span></div>
+          <div class="game-card" data-console="ps1" data-title="tomb raider ii"><span class="game-title">Tomb Raider II</span><span class="console-badge">PS1</span></div>
+          <div class="game-card" data-console="ps1" data-title="tony hawk"><span class="game-title">Tony Hawk</span><span class="console-badge">PS1</span></div>
+          <div class="game-card" data-console="ps1" data-title="tony hawk 3"><span class="game-title">Tony Hawk 3</span><span class="console-badge">PS1</span></div>
+        </div>
+      </div>
+      <div class="console-group" id="ps2" data-console="ps2">
+        <h2 class="console-heading">PS2</span></h2>
+        <div class="games-grid">
+          <div class="game-card" data-console="ps2" data-title="army men air attack 2"><span class="game-title">Army Men Air Attack 2</span><span class="console-badge">PS2</span></div>
+          <div class="game-card" data-console="ps2" data-title="army men soldiers of misfortune"><span class="game-title">Army Men Soldiers of Misfortune</span><span class="console-badge">PS2</span></div>
+          <div class="game-card" data-console="ps2" data-title="bully"><span class="game-title">Bully</span><span class="console-badge">PS2</span></div>
+          <div class="game-card" data-console="ps2" data-title="cars"><span class="game-title">Cars</span><span class="console-badge">PS2</span></div>
+          <div class="game-card" data-console="ps2" data-title="dead to rights 2"><span class="game-title">Dead to Rights 2</span><span class="console-badge">PS2</span></div>
+          <div class="game-card" data-console="ps2" data-title="dora the explorer journey to the purple planet"><span class="game-title">Dora the Explorer Journey to the Purple Planet</span><span class="console-badge">PS2</span></div>
+          <div class="game-card" data-console="ps2" data-title="frogger the great quest"><span class="game-title">Frogger the Great Quest</span><span class="console-badge">PS2</span></div>
+          <div class="game-card" data-console="ps2" data-title="gran turismo 3"><span class="game-title">Gran Turismo 3</span><span class="console-badge">PS2</span></div>
+          <div class="game-card" data-console="ps2" data-title="grand theft auto iii"><span class="game-title">Grand Theft Auto III</span><span class="console-badge">PS2</span></div>
+          <div class="game-card" data-console="ps2" data-title="grand theft auto iv"><span class="game-title">Grand Theft Auto IV</span><span class="console-badge">PS2</span></div>
+          <div class="game-card" data-console="ps2" data-title="grand theft auto san andreas"><span class="game-title">Grand Theft Auto San Andreas</span><span class="console-badge">PS2</span></div>
+          <div class="game-card" data-console="ps2" data-title="grand theft auto vice city"><span class="game-title">Grand Theft Auto Vice City</span><span class="console-badge">PS2</span></div>
+          <div class="game-card" data-console="ps2" data-title="ice age: dawn of the dinosaurs"><span class="game-title">Ice Age: Dawn of the Dinosaurs</span><span class="console-badge">PS2</span></div>
+          <div class="game-card" data-console="ps2" data-title="jak and daxter the precursor legacy"><span class="game-title">Jak and Daxter The Precursor Legacy</span><span class="console-badge">PS2</span></div>
+          <div class="game-card" data-console="ps2" data-title="medal of honor vanguard"><span class="game-title">Medal of Honor Vanguard</span><span class="console-badge">PS2</span></div>
+          <div class="game-card" data-console="ps2" data-title="mortal kombat armageddon"><span class="game-title">Mortal Kombat Armageddon</span><span class="console-badge">PS2</span></div>
+          <div class="game-card" data-console="ps2" data-title="mortal kombat deception"><span class="game-title">Mortal Kombat Deception</span><span class="console-badge">PS2</span></div>
+          <div class="game-card" data-console="ps2" data-title="rampage total destruction"><span class="game-title">Rampage Total Destruction</span><span class="console-badge">PS2</span></div>
+          <div class="game-card" data-console="ps2" data-title="ratchet & clank size matters"><span class="game-title">Ratchet & Clank Size Matters</span><span class="console-badge">PS2</span></div>
+          <div class="game-card" data-console="ps2" data-title="scooby-doo first frights"><span class="game-title">Scooby-Doo First Frights</span><span class="console-badge">PS2</span></div>
+          <div class="game-card" data-console="ps2" data-title="sonic mega collection plus"><span class="game-title">Sonic Mega Collection Plus</span><span class="console-badge">PS2</span></div>
+          <div class="game-card" data-console="ps2" data-title="spongebob squarepants creature from krusty krab"><span class="game-title">SpongeBob SquarePants Creature from Krusty Krab</span><span class="console-badge">PS2</span></div>
+          <div class="game-card" data-console="ps2" data-title="twisted metal: black & twisted metal: black online"><span class="game-title">Twisted Metal: Black & Twisted Metal: Black Online</span><span class="console-badge">PS2</span></div>
+        </div>
+      </div>
+      <div class="console-group" id="sega-genesis" data-console="sega-genesis">
+        <h2 class="console-heading">Sega Genesis</span></h2>
+        <div class="games-grid">
+          <div class="game-card" data-console="sega-genesis" data-title="battletoads and double dragon the ultimate team"><span class="game-title">Battletoads and Double Dragon The Ultimate Team</span><span class="console-badge">Sega Genesis</span></div>
+          <div class="game-card" data-console="sega-genesis" data-title="bubsy"><span class="game-title">Bubsy</span><span class="console-badge">Sega Genesis</span></div>
+          <div class="game-card" data-console="sega-genesis" data-title="fighting masters"><span class="game-title">Fighting Masters</span><span class="console-badge">Sega Genesis</span></div>
+          <div class="game-card" data-console="sega-genesis" data-title="gargoyles"><span class="game-title">Gargoyles</span><span class="console-badge">Sega Genesis</span></div>
+          <div class="game-card" data-console="sega-genesis" data-title="sonic the hedgehog 2"><span class="game-title">Sonic the Hedgehog 2</span><span class="console-badge">Sega Genesis</span></div>
+          <div class="game-card" data-console="sega-genesis" data-title="taz-mania"><span class="game-title">Taz-Mania</span><span class="console-badge">Sega Genesis</span></div>
+          <div class="game-card" data-console="sega-genesis" data-title="virtua fighter 2"><span class="game-title">Virtua Fighter 2</span><span class="console-badge">Sega Genesis</span></div>
+        </div>
+      </div>
+      <div class="console-group" id="xbox" data-console="xbox">
+        <h2 class="console-heading">Xbox</span></h2>
+        <div class="games-grid">
+          <div class="game-card" data-console="xbox" data-title="halo 2"><span class="game-title">Halo 2</span><span class="console-badge">Xbox</span></div>
+          <div class="game-card" data-console="xbox" data-title="halo: combat evolved"><span class="game-title">Halo: Combat Evolved</span><span class="console-badge">Xbox</span></div>
+          <div class="game-card" data-console="xbox" data-title="star wars knights of the old republic"><span class="game-title">Star Wars Knights of the Old Republic</span><span class="console-badge">Xbox</span></div>
+          <div class="game-card" data-console="xbox" data-title="star wars knights of the old republic ii"><span class="game-title">Star Wars Knights of the Old Republic II</span><span class="console-badge">Xbox</span></div>
+        </div>
+      </div>
+      <div class="console-group" id="xbox-360" data-console="xbox-360">
+        <h2 class="console-heading">Xbox 360</span></h2>
+        <div class="games-grid">
+          <div class="game-card" data-console="xbox-360" data-title="call of duty black ops ii"><span class="game-title">Call of Duty Black Ops II</span><span class="console-badge">Xbox 360</span></div>
+          <div class="game-card" data-console="xbox-360" data-title="guitar hero 5"><span class="game-title">Guitar Hero 5</span><span class="console-badge">Xbox 360</span></div>
+          <div class="game-card" data-console="xbox-360" data-title="guitar hero ii"><span class="game-title">Guitar Hero II</span><span class="console-badge">Xbox 360</span></div>
+          <div class="game-card" data-console="xbox-360" data-title="guitar hero world tour"><span class="game-title">Guitar Hero World Tour</span><span class="console-badge">Xbox 360</span></div>
+          <div class="game-card" data-console="xbox-360" data-title="halo 3"><span class="game-title">Halo 3</span><span class="console-badge">Xbox 360</span></div>
+          <div class="game-card" data-console="xbox-360" data-title="halo 4"><span class="game-title">Halo 4</span><span class="console-badge">Xbox 360</span></div>
+          <div class="game-card" data-console="xbox-360" data-title="kinect adventures"><span class="game-title">Kinect Adventures</span><span class="console-badge">Xbox 360</span></div>
+          <div class="game-card" data-console="xbox-360" data-title="lego batman 2"><span class="game-title">LEGO Batman 2</span><span class="console-badge">Xbox 360</span></div>
+          <div class="game-card" data-console="xbox-360" data-title="lego batman the videogame"><span class="game-title">LEGO Batman The Videogame</span><span class="console-badge">Xbox 360</span></div>
+          <div class="game-card" data-console="xbox-360" data-title="lego indiana jones the original adventures"><span class="game-title">LEGO Indiana Jones The Original Adventures</span><span class="console-badge">Xbox 360</span></div>
+          <div class="game-card" data-console="xbox-360" data-title="lego marvel super heroes"><span class="game-title">LEGO Marvel Super Heroes</span><span class="console-badge">Xbox 360</span></div>
+          <div class="game-card" data-console="xbox-360" data-title="lego star wars complete saga"><span class="game-title">LEGO Star Wars Complete Saga</span><span class="console-badge">Xbox 360</span></div>
+          <div class="game-card" data-console="xbox-360" data-title="minute to win it"><span class="game-title">Minute to Win It</span><span class="console-badge">Xbox 360</span></div>
+          <div class="game-card" data-console="xbox-360" data-title="motionsports"><span class="game-title">MotionSports</span><span class="console-badge">Xbox 360</span></div>
+          <div class="game-card" data-console="xbox-360" data-title="sega superstars tennis"><span class="game-title">Sega Superstars Tennis</span><span class="console-badge">Xbox 360</span></div>
+          <div class="game-card" data-console="xbox-360" data-title="skate 3"><span class="game-title">Skate 3</span><span class="console-badge">Xbox 360</span></div>
+          <div class="game-card" data-console="xbox-360" data-title="skylanders spyro's adventure"><span class="game-title">Skylanders Spyro's Adventure</span><span class="console-badge">Xbox 360</span></div>
+          <div class="game-card" data-console="xbox-360" data-title="wwe 2k16"><span class="game-title">WWE 2K16</span><span class="console-badge">Xbox 360</span></div>
+          <div class="game-card" data-console="xbox-360" data-title="wwe smackdown vs. raw 2007"><span class="game-title">WWE Smackdown vs. Raw 2007</span><span class="console-badge">Xbox 360</span></div>
+        </div>
+      </div>
+    <div class="empty-msg" id="emptyMsg">No matching games found. Try clearing your search or switching consoles.</div>
+  </main>
+
+  <div class="cta-footer">
+    <div class="cta-box">
+      <h3>See Your Favorites?</h3>
+      <p>Let us know which consoles and games you want featured at your event.</p>
+      <a href="index.html#book" class="book-btn">Book Your Event</a>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var activeFilter = "all";
+      var searchInput = document.getElementById("searchInput");
+      var tabButtons = document.querySelectorAll(".tab-btn");
+      var groups = document.querySelectorAll(".console-group");
+      var cards = document.querySelectorAll(".game-card");
+      var visibleCountEl = document.getElementById("visibleCount");
+      var emptyMsg = document.getElementById("emptyMsg");
+
+      function updateView() {
+        var query = (searchInput.value || "").toLowerCase().trim();
+        var totalVisible = 0;
+
+        for (var i = 0; i < groups.length; i++) {
+          var group = groups[i];
+          var groupConsole = group.getAttribute("data-console");
+          var matchesTab = (activeFilter === "all" || activeFilter === groupConsole);
+
+          if (!matchesTab) {
+            group.classList.add("hidden");
+            continue;
+          }
+
+          var groupCards = group.querySelectorAll(".game-card");
+          var groupVisible = 0;
+
+          for (var j = 0; j < groupCards.length; j++) {
+            var card = groupCards[j];
+            var title = card.getAttribute("data-title") || "";
+            if (!query || title.indexOf(query) !== -1) {
+              card.classList.remove("hidden");
+              groupVisible++;
+              totalVisible++;
+            } else {
+              card.classList.add("hidden");
+            }
+          }
+
+          if (groupVisible === 0) {
+            group.classList.add("hidden");
+          } else {
+            group.classList.remove("hidden");
+          }
+        }
+
+        visibleCountEl.textContent = "Showing " + totalVisible + " game" + (totalVisible === 1 ? "" : "s");
+        emptyMsg.style.display = totalVisible === 0 ? "block" : "none";
+      }
+
+      function setFilter(filter) {
+        activeFilter = filter;
+        for (var i = 0; i < tabButtons.length; i++) {
+          var btn = tabButtons[i];
+          if (btn.getAttribute("data-filter") === filter) {
+            btn.classList.add("active");
+          } else {
+            btn.classList.remove("active");
+          }
+        }
+        updateView();
+      }
+
+      for (var i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].addEventListener("click", function () {
+          setFilter(this.getAttribute("data-filter"));
+        });
+      }
+
+      searchInput.addEventListener("input", updateView);
+
+      if (window.location.hash) {
+        var hash = window.location.hash.replace("#", "").toLowerCase();
+        for (var k = 0; k < tabButtons.length; k++) {
+          if (tabButtons[k].getAttribute("data-filter") === hash) {
+            setFilter(hash);
+            break;
+          }
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
